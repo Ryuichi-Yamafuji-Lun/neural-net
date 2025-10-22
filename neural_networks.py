@@ -131,7 +131,7 @@ class relu:
         ################################################################################
         # TODO: Implement the relu forward pass. Store the result in forward_output    #
         ################################################################################
-        np.mask = X > 0
+        self.mask = (X > 0)
 
         forward_output = np.maximum(0, X)
 
@@ -155,7 +155,7 @@ class relu:
         # TODO: Implement the backward pass
         # You can use the mask created in the forward step.
         ####################################################################################################
-        backward_output = grad @ self.mask
+        backward_output = grad * self.mask
 
         return backward_output
 
@@ -395,6 +395,9 @@ def main(main_params):
             # TODO: Call the backward methods of every layer in the model in reverse order.
             # We have given the first and last backward calls (above and below this TODO block).
             ######################################################################################
+            grad_d1 = model['L2'].backward(d1, grad_a2)
+            grad_h1 = model['drop1'].backward(h1, grad_d1)
+            grad_a1 = model['nonlinear1'].backward(a1, grad_h1)
             grad_x = model['L1'].backward(x, grad_a1)
 
             ### gradient_update ###

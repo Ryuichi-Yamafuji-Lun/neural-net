@@ -131,7 +131,9 @@ class relu:
         ################################################################################
         # TODO: Implement the relu forward pass. Store the result in forward_output    #
         ################################################################################
-        
+        np.mask = X > 0
+
+        forward_output = np.maximum(0, X)
 
         return forward_output
 

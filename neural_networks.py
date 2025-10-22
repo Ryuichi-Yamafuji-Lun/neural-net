@@ -177,7 +177,7 @@ class tanh:
         # TODO: Implement the tanh forward pass. Store the result in forward_output
         # You can use np.tanh()
         ################################################################################
-
+        forward_output = np.tanh(X)
         return forward_output
 
     def backward(self, X, grad):
@@ -195,7 +195,7 @@ class tanh:
         # TODO: Implement the backward pass
         # Derivative of tanh(z) is (1 - tanh(z)^2)
         ####################################################################################################
-
+        backward_output = grad * (1 - np.tanh(X)**2)
 
         return backward_output
 

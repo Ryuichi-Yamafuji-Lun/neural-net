@@ -155,7 +155,7 @@ class relu:
         # TODO: Implement the backward pass
         # You can use the mask created in the forward step.
         ####################################################################################################
-
+        backward_output = grad @ self.mask
 
         return backward_output
 
